@@ -8,6 +8,11 @@ using TMPro;
 public class Set : MonoBehaviour
 {
 
+    [Header("Vidoe Setting")]
+    public bool fullscreen = true;
+    public TMP_Dropdown resolution;
+    public Toggle FS;
+
     [Header("Sound Settings")]
      public AudioMixer aduiMix;
      public Slider master;
@@ -83,6 +88,27 @@ public class Set : MonoBehaviour
             aduiMix.SetFloat("Special Volume", -80);
         }else{
             aduiMix.SetFloat("Special Volume", sound);
+        }
+    }
+
+    public void setFullScreen(){
+        fullscreen = FS.isOn;
+        Screen.fullScreen = fullscreen;
+    }
+
+    public void setResolution(){
+        int choice = resolution.value;
+
+        if (choice == 0){
+            Screen.SetResolution(1920,1080,fullscreen);
+        }else if(choice == 1){
+            Screen.SetResolution(1280,720,fullscreen);
+        }else if(choice == 2){
+            Screen.SetResolution(960,540,fullscreen);
+        }else if(choice == 3){
+            Screen.SetResolution(2560,1440,fullscreen);
+        }else{
+            Screen.SetResolution(1920,1080,true);
         }
     }
 }
