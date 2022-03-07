@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameWinUI;
 
     [Header("Player stats")]
-    public int health;
+    public int health = 100;
 
     public static GameManager instance;
 

@@ -11,6 +11,11 @@ public class Plyaer_movement : MonoBehaviour
 
     public GameObject Cat;
 
+    [Header("SFX")]
+    public AudioClip Hit;
+    public AudioClip blast;
+    private AudioSource audio;
+
     [Header("Guns")]
     public Transform gun;
     public GameObject bullet;
@@ -22,6 +27,7 @@ public class Plyaer_movement : MonoBehaviour
     // Start is called before the first frame update
     private void Awake() {
         player = GetComponent<Transform>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -49,7 +55,20 @@ public class Plyaer_movement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Enemy"){
+            if(audio.clip != Hit){
+                audio.clip = Hit;
+            }
+            audio.Play();
+        }
+    }
+
     public void shoot(){
+        if(audio.clip != blast){
+            audio.clip = blast;
+        }
+        audio.Play();
         Instantiate(bullet,gun.position,gun.rotation);
     }
 
