@@ -147,7 +147,19 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 4d8a9af213d174d1b9f08d3e50f72a13
+    name: BGM Volume
+  - guid: e32eec3c387164708bf13625a76c75c2
+    name: Enemy Volume
+  - guid: 67ddbbd97c1d94af98ae8e677cef7380
+    name: Explosion Volume
+  - guid: 14ad50bd82e93436880b6cbf79596765
+    name: Master Volume
+  - guid: 1c4bf734f89434515a367a2d608b1e68
+    name: Player Volume
+  - guid: 8be658e9aef7b440b801db7c5088332a
+    name: Special Volume
   m_AudioMixerGroupViews:
   - guids:
     - 5f034b9489f6e47b3bdf119e74fe74e9
