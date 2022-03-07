@@ -36,14 +36,16 @@ public class Plyaer_movement : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         Cat.transform.rotation = Quaternion.Slerp(Cat.transform.rotation, rotation, rotation_speed * Time.deltaTime);
 
-        if(Input.GetMouseButtonDown(0)){// shoot
-            speed = 0f;
-            shoot();
-        }else if (Input.GetMouseButton(1)){//stop
-            speed = 0f;
-        }else{//Move
-            speed = Movement_speed;
-            player.position += Cat.transform.right * speed *Time.deltaTime;
+        if(!GameManager.instance.GameStop){
+            if(Input.GetMouseButtonDown(0)){// shoot
+             speed = 0f;
+             shoot();
+             }else if (Input.GetMouseButton(1)){//stop
+             speed = 0f;
+             }else{//Move
+             speed = Movement_speed;
+             player.position += Cat.transform.right * speed *Time.deltaTime;
+        }
         }
     }
 
