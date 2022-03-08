@@ -7,6 +7,8 @@ using TMPro;
 
 public class Set : MonoBehaviour
 {
+    [Header("Control Setting")]
+    public TMP_Dropdown Methods;
 
     [Header("Vidoe Setting")]
     public bool fullscreen = true;
@@ -91,6 +93,7 @@ public class Set : MonoBehaviour
         }
     }
 
+    //Video Setting
     public void setFullScreen(){
         fullscreen = FS.isOn;
         Screen.fullScreen = fullscreen;
@@ -111,4 +114,18 @@ public class Set : MonoBehaviour
             Screen.SetResolution(1920,1080,true);
         }
     }
+
+    //Controll Setting
+    public void SetControl(){
+        int choice = Methods.value;
+
+        if(choice == 0){
+            GameManager.instance.controls = GameManager.controlMethod.Mouse;
+        }else if (choice == 1){
+            GameManager.instance.controls = GameManager.controlMethod.TwoButtonMouse;
+        }else if (choice == 2){
+            GameManager.instance.controls = GameManager.controlMethod.TwoButtonKeyboard;
+        }
+    }
+
 }

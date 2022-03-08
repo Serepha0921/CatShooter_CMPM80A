@@ -2973,7 +2973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 561926189}
   m_Layer: 5
-  m_Name: Resolution
+  m_Name: ControlMethods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2997,8 +2997,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.578, y: -193}
-  m_SizeDelta: {x: 353.163, y: 301.923}
+  m_AnchoredPosition: {x: 212.10114, y: -193}
+  m_SizeDelta: {x: 424.21, y: 301.923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &563777807
 GameObject:
@@ -4047,6 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f602e38c35e347ef8a5acd997ee9ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Methods: {fileID: 1766714308}
   fullscreen: 1
   resolution: {fileID: 809417943}
   FS: {fileID: 103915422}
@@ -8427,6 +8428,7 @@ MonoBehaviour:
   GameOverUI: {fileID: 0}
   GameWinUI: {fileID: 0}
   health: 0
+  controls: 0
 --- !u!4 &1707339390
 Transform:
   m_ObjectHideFlags: 0
@@ -8956,8 +8958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80.000015, y: -25}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -112.1, y: -25}
+  m_SizeDelta: {x: 224.21, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766714308
 MonoBehaviour:
@@ -9009,15 +9011,27 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
+    - m_Text: Mouse
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: MouseButton
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: ArrowKeys
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
+        m_MethodName: SetControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1766714309
 MonoBehaviour:
@@ -10007,7 +10021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1900301247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10494,7 +10508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option A
+  m_text: Mouse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -11068,6 +11082,14 @@ PrefabInstance:
     - target: {fileID: 6839181520847754530, guid: 6e1a3c11e35c24da2bd6aecfd7b9c813, type: 3}
       propertyPath: m_Name
       value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839181520847754531, guid: 6e1a3c11e35c24da2bd6aecfd7b9c813, type: 3}
+      propertyPath: Moving_speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839181520847754531, guid: 6e1a3c11e35c24da2bd6aecfd7b9c813, type: 3}
+      propertyPath: MoveSpeed_key
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8128181124666626534, guid: 6e1a3c11e35c24da2bd6aecfd7b9c813, type: 3}
       propertyPath: OutputAudioMixerGroup

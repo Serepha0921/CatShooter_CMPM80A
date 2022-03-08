@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Player stats")]
     public int health = 100;
+    public enum controlMethod {Mouse,TwoButtonMouse,TwoButtonKeyboard};
+    public controlMethod controls;
 
     public static GameManager instance;
 
