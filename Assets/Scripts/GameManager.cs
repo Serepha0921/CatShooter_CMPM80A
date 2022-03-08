@@ -8,10 +8,16 @@ public class GameManager : MonoBehaviour
     [Header("Game stats")]
     public bool isGameover = false;
     public bool GameStop = false;
-    public TextMeshProUGUI HP;
-    public TextMeshProUGUI Timer;
     public int Score = 0;
     public float time = 60f;
+
+    [Header("UI")]
+    public TextMeshProUGUI HP;
+    public TextMeshProUGUI Timer;
+
+    [Header("GameSystem")]
+    public GameObject cat;
+    public GameObject Spawner;
 
     [Header("Player stats")]
     public int health = 300;
@@ -31,12 +37,16 @@ public class GameManager : MonoBehaviour
         }else{
             Destroy(gameObject);
         }
+        pauseGame();
     }
 
-    private void Start() {
+    public void Start_Game() {
+        cat.SetActive(true);
+        Spawner.SetActive(true);
         health = MaxHealth;
         Score = 0;
         time = 60f;
+        resumeGame();
     }
 
     public void PlayerDamage(int damage){
@@ -49,8 +59,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(time >0){
-            time -= Time.deltaTime;
+        if(!GameStop){
+            if(time >0){
+                time -= Time.deltaTime;
+            }
         }
         Timer.text = time.ToString("N0") + "s";
         HP.text = health+" / "+MaxHealth;

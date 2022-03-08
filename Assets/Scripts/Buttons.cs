@@ -9,6 +9,9 @@ public class Buttons : MonoBehaviour
     public GameObject pause_pannel;
     public GameObject setting_pannel;
     public GameObject pause_button;
+    public GameObject Start_pannel;
+
+    public bool Starting = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -49,9 +52,25 @@ public class Buttons : MonoBehaviour
         setting_pannel.SetActive (true);
     }
 
+    public void Start_Set(){
+        Start_pannel.SetActive(false);
+        setting_pannel.SetActive(true);
+        Starting = true;
+    }
+
     public void back(){
         setting_pannel.SetActive (false);
-        pause_pannel.SetActive (true);
+        if(Starting){
+            Start_pannel.SetActive(true);
+        }else{
+            pause_pannel.SetActive (true);
+        }
+    }
+
+    public void StartTheGAme(){
+        GameManager.instance.Start_Game();
+        Starting = false;
+        Start_pannel.SetActive(false);
     }
 
     public void quit(){
