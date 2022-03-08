@@ -471,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &92788957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +488,6 @@ MonoBehaviour:
   Red: {fileID: 6378018293823956836, guid: 2f6e6de2a770a450493e4833bed64508, type: 3}
   term_yellow: 10
   term_red: 5
-  IsSpawning: 1
 --- !u!4 &92788958
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,7 +1049,6 @@ GameObject:
   - component: {fileID: 242608369}
   - component: {fileID: 242608372}
   - component: {fileID: 242608371}
-  - component: {fileID: 242608370}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Border
@@ -1072,18 +1070,6 @@ Transform:
   m_Father: {fileID: 1526302468}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &242608370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242608368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf2664036605463a8d87526f1cdb85f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &242608371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2886,8 +2872,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3611074}
   camera_distance_z: -10
-  speed: 0.05
+  speed: 0.5
+  height: 0
+  width: 0
   offset: {x: 0, y: 0, z: 0}
+  center: {x: 0, y: 0}
+  mapSize: {x: 28.3, y: 21.7}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2915,7 +2905,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5075,7 +5065,6 @@ GameObject:
   - component: {fileID: 879226352}
   - component: {fileID: 879226355}
   - component: {fileID: 879226354}
-  - component: {fileID: 879226353}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Border
@@ -5097,18 +5086,6 @@ Transform:
   m_Father: {fileID: 1526302468}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &879226353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 879226351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf2664036605463a8d87526f1cdb85f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &879226354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8561,7 +8538,6 @@ GameObject:
   - component: {fileID: 1640019220}
   - component: {fileID: 1640019219}
   - component: {fileID: 1640019217}
-  - component: {fileID: 1640019218}
   m_Layer: 0
   m_Name: Square
   m_TagString: Border
@@ -8595,18 +8571,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1640019218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640019216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf2664036605463a8d87526f1cdb85f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1640019219
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9610,7 +9574,6 @@ GameObject:
   - component: {fileID: 1772441362}
   - component: {fileID: 1772441365}
   - component: {fileID: 1772441364}
-  - component: {fileID: 1772441363}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Border
@@ -9632,18 +9595,6 @@ Transform:
   m_Father: {fileID: 1526302468}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1772441363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772441361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf2664036605463a8d87526f1cdb85f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1772441364
 BoxCollider2D:
   m_ObjectHideFlags: 0

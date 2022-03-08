@@ -83,7 +83,6 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator ChangeMovement(){
-        Debug.Log("change");
         movementFlag = Random.Range(0,5);
         yield return new WaitForSeconds(5f);
         
