@@ -15,6 +15,22 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * Bullet_speed;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Enemy"){
+            Enemy enmy = other.gameObject.GetComponent<Enemy>();
+            if(enmy != null){
+                enmy.GetDamage(damage);
+            }
+
+            anim();
+        }
+        if(other.gameObject.tag == "Building"){
+            anim();
+        }
+    }
+
+    /*
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.tag == "Enemy"){
@@ -29,7 +45,7 @@ public class Bullet : MonoBehaviour
             anim();
         }
 
-    }
+    }*/
 
     private void anim(){
         rb.velocity = transform.right * 0;

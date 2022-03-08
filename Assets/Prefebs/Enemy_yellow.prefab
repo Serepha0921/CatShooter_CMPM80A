@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6378018293823956834}
   - component: {fileID: 6378018293823956837}
   - component: {fileID: 3080251750546224313}
+  - component: {fileID: 5547001296017440210}
   m_Layer: 0
   m_Name: Enemy_yellow
   m_TagString: Enemy
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6378018293823956836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.76, y: -5.94, z: -1.103588}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 6378018295003044085}
   m_Father: {fileID: 0}
@@ -46,8 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34aefa381548e4a9698920abb97d3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 300
+  damage: 50
+  attacked: 0
   audio: {fileID: 3080251750546224313}
+  normal_speed: 2
+  tracing_speed: 3
+  rotation_speed: 5
+  isTracing: 0
 --- !u!61 &6378018293823956837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.87, y: 0.3}
+  m_Offset: {x: 0.31, y: 0.9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -72,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 3.4}
+  m_Size: {x: 3.37, y: 2.14}
   m_EdgeRadius: 0
 --- !u!82 &3080251750546224313
 AudioSource:
@@ -170,6 +177,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &5547001296017440210
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378018293823956836}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.37, y: 0.82}
+  serializedVersion: 2
+  m_Radius: 7
 --- !u!1 &6378018295003044084
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,13 +217,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6378018295003044084}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6378018293823956835}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &6378018295003044082
 SpriteRenderer:
   m_ObjectHideFlags: 0
