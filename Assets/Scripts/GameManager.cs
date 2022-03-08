@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public bool isGameover = false;
     public bool GameStop = false;
     public TextMeshProUGUI HP;
+    public TextMeshProUGUI Timer;
+    public int Score = 0;
+    public float time = 60f;
 
     [Header("Player stats")]
     public int health = 300;
@@ -32,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         health = MaxHealth;
+        Score = 0;
+        time = 60f;
     }
 
     public void PlayerDamage(int damage){
@@ -44,6 +49,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if(time >0){
+            time -= Time.deltaTime;
+        }
+        Timer.text = time.ToString("N0") + "s";
         HP.text = health+" / "+MaxHealth;
     }
 

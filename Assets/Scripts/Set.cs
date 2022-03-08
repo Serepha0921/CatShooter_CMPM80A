@@ -7,6 +7,16 @@ using TMPro;
 
 public class Set : MonoBehaviour
 {
+    public static Set setting;
+
+    private void Awake() {
+        if(setting == null){
+            setting = this;
+        }else{
+            Destroy(gameObject);
+        }
+    }
+
     [Header("Control Setting")]
     public TMP_Dropdown Methods;
 

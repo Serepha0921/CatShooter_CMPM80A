@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy() {
         GameManager.instance.number -= 1;
+        GameManager.instance.Score += 10;
+        GameManager.instance.time += 15;
     }
 
     private void Awake() {
