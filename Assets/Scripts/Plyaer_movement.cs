@@ -149,6 +149,7 @@ public class Plyaer_movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Enemy"){
+            GameManager.instance.PlayerDamage(30);
             if(audio.clip != Hit){
                 audio.clip = Hit;
             }

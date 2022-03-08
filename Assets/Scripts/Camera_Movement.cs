@@ -47,11 +47,6 @@ public class Camera_Movement : MonoBehaviour
 
     private void LateUpdate()
     {
-        /*
-        Vector3 desiredPosition = target.position + offset + new Vector3(0,0,camera_distance_z);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, speed);
-        transform.position = smoothedPosition;*/
-
         limitCameraMove();
     }
 }
