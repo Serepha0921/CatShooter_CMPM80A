@@ -35,13 +35,13 @@ public class Enemy : MonoBehaviour
 
     public void Dead(){
         audio.Play();
+        GameManager.instance.Score += 10;
+        GameManager.instance.time += 15;
         Destroy(gameObject,0.8f);
     }
 
     private void OnDestroy() {
         GameManager.instance.number -= 1;
-        GameManager.instance.Score += 10;
-        GameManager.instance.time += 15;
     }
 
     private void Awake() {

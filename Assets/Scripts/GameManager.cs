@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("Game stats")]
     public bool isGameover = false;
     public bool GameStop = false;
+    public Score sc;
     public int Score = 0;
     public float time = 60f;
 
@@ -62,6 +64,13 @@ public class GameManager : MonoBehaviour
         if(!GameStop){
             if(time >0){
                 time -= Time.deltaTime;
+            }else{
+                sc.Score_number = Score;
+                SceneManager.LoadScene("Win");
+            }
+            if(health <= 0){
+                sc.Score_number = Score;
+                SceneManager.LoadScene("Lose");
             }
         }
         Timer.text = time.ToString("N0") + "s";
