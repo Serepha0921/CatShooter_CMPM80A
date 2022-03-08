@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public enum controlMethod {Mouse,TwoButtonMouse,TwoButtonKeyboard};
     public controlMethod controls;
 
+    [Header("Enemy Info")]
+    public int number = 0;
+    public int max = 10;
+
     public static GameManager instance;
 
     private void Awake() {

@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
 
             anim();
         }
-        if(other.gameObject.tag == "Building"){
+        if(other.gameObject.tag == "Building" || other.gameObject.tag == "Border"){
             anim();
         }
     }
