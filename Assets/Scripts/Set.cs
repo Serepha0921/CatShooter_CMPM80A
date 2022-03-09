@@ -19,6 +19,10 @@ public class Set : MonoBehaviour
 
     [Header("Control Setting")]
     public TMP_Dropdown Methods;
+    [Space]
+    public GameObject Mouse_pannel;
+    public GameObject Mouse_Button_pannel;
+    public GameObject Keyboard_pannel;
 
     [Header("Vidoe Setting")]
     public bool fullscreen = true;
@@ -131,10 +135,19 @@ public class Set : MonoBehaviour
 
         if(choice == 0){
             GameManager.instance.controls = GameManager.controlMethod.Mouse;
+            Mouse_pannel.SetActive(true);
+            Mouse_Button_pannel.SetActive(false);
+            Keyboard_pannel.SetActive(false);
         }else if (choice == 1){
             GameManager.instance.controls = GameManager.controlMethod.TwoButtonMouse;
+            Mouse_Button_pannel.SetActive(true);
+            Mouse_pannel.SetActive(false);
+            Keyboard_pannel.SetActive(false);
         }else if (choice == 2){
             GameManager.instance.controls = GameManager.controlMethod.TwoButtonKeyboard;
+            Keyboard_pannel.SetActive(true);
+            Mouse_pannel.SetActive(false);
+            Mouse_Button_pannel.SetActive(false);
         }
     }
 
