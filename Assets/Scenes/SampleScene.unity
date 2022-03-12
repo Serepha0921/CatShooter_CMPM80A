@@ -420,8 +420,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: StartTheGAme
         m_Mode: 1
         m_Arguments:
@@ -1866,8 +1866,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
         m_Arguments:
@@ -3261,7 +3261,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: back
         m_Mode: 1
@@ -5212,8 +5212,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: settings
         m_Mode: 1
         m_Arguments:
@@ -5905,6 +5905,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f602e38c35e347ef8a5acd997ee9ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause_pannel: {fileID: 838358368}
+  setting_pannel: {fileID: 1900301246}
+  pause_button: {fileID: 1594842298}
+  Start_pannel: {fileID: 198666030}
+  Starting: 0
   title: {fileID: 1874401860}
   control_pannel: {fileID: 471645854}
   video_pannel: {fileID: 1849200650}
@@ -6650,7 +6655,6 @@ GameObject:
   - component: {fileID: 862073795}
   - component: {fileID: 862073794}
   - component: {fileID: 862073793}
-  - component: {fileID: 862073797}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6744,23 +6748,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &862073797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862073792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8960b4285fe24c0aacfbc7dd0bbe306, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pause_pannel: {fileID: 838358368}
-  setting_pannel: {fileID: 1900301246}
-  pause_button: {fileID: 1594842298}
-  Start_pannel: {fileID: 198666030}
-  Starting: 0
 --- !u!1 &868369576
 GameObject:
   m_ObjectHideFlags: 0
@@ -7863,8 +7850,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
         m_Arguments:
@@ -9536,8 +9523,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: Start_Set
         m_Mode: 1
         m_Arguments:
@@ -11381,8 +11368,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: resume
         m_Mode: 1
         m_Arguments:
@@ -12006,8 +11993,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862073797}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: pause
         m_Mode: 1
         m_Arguments:

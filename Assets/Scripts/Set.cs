@@ -9,6 +9,15 @@ public class Set : MonoBehaviour
 {
     public static Set setting;
 
+    [Header("Pannels")]
+    public GameObject pause_pannel;
+    public GameObject setting_pannel;
+    public GameObject pause_button;
+    public GameObject Start_pannel;
+    [Space]
+    public bool Starting = false;
+
+    [Space]
     public TextMeshProUGUI title;
 
     [Header("Settings")]
@@ -56,17 +65,69 @@ public class Set : MonoBehaviour
     }
 
     private void Start() {
-        if (sc.control_method_value == 0){
-            GameManager.instance.controls = GameManager.controlMethod.Mouse;
-        } else if (sc.control_method_value == 1){
-            GameManager.instance.controls = GameManager.controlMethod.TwoButtonMouse;
-        }else if (sc.control_method_value == 2){
-            GameManager.instance.controls = GameManager.controlMethod.TwoButtonKeyboard;
-        }
+        pause_pannel.SetActive (false);
+        setting_pannel.SetActive (false);
+
         Methods.value = sc.control_method_value;
     }
 
-    //Pannel Settings
+    private void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            pause();
+        }
+    }
+
+    //Buttons --------------------------------------------------------------------------------------------------------------------------------------------------------
+    public void pause(){
+        if (!pause_pannel.activeSelf && ! setting_pannel.activeSelf){
+            GameManager.instance.pauseGame();
+            pause_pannel.SetActive (true);
+            pause_button.SetActive (false);
+        } else {
+            GameManager.instance.resumeGame();
+            pause_pannel.SetActive (false);
+            setting_pannel.SetActive (false);
+            pause_button.SetActive (true);
+        }
+    }
+
+    public void resume(){
+        GameManager.instance.resumeGame();
+        pause_pannel.SetActive (false);
+        pause_button.SetActive (true);
+    }
+
+    public void settings (){
+        pause_pannel.SetActive (false);
+        setting_pannel.SetActive (true);
+    }
+
+    public void Start_Set(){
+        Start_pannel.SetActive(false);
+        setting_pannel.SetActive(true);
+        Starting = true;
+    }
+
+    public void back(){
+        setting_pannel.SetActive (false);
+        if(Starting){
+            Start_pannel.SetActive(true);
+        }else{
+            pause_pannel.SetActive (true);
+        }
+    }
+
+    public void StartTheGAme(){
+        GameManager.instance.Start_Game();
+        Starting = false;
+        Start_pannel.SetActive(false);
+    }
+
+    public void quit(){
+        Application.Quit();
+    }
+
+    //Pannel Settings --------------------------------------------------------------------------------------------------------------------------------------------------------
     public void control(){
         title.text = "Control";
         control_pannel.SetActive(true);
@@ -103,7 +164,7 @@ public class Set : MonoBehaviour
         sound_pannel.SetActive(false);
     }
 
-    //Sound Settings
+    //Sound Settings --------------------------------------------------------------------------------------------------------------------------------------------------------
     public void master_control(){
         float sound = master.value;
         master_num.text = "Master Volume: " + sound.ToString("F1");
@@ -163,7 +224,7 @@ public class Set : MonoBehaviour
         }
     }
 
-    //Video Setting
+    //Video Setting --------------------------------------------------------------------------------------------------------------------------------------------------------
     public void setFullScreen(){
         fullscreen = FS.isOn;
         Screen.fullScreen = fullscreen;
@@ -185,7 +246,7 @@ public class Set : MonoBehaviour
         }
     }
 
-    //Controll Setting
+    //Controll Setting --------------------------------------------------------------------------------------------------------------------------------------------------------
     public void SetControl(){
 
         if(Methods.value == 0){
