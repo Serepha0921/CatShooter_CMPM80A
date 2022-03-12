@@ -1140,8 +1140,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1900301250}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: tutorial
         m_Mode: 1
         m_Arguments:
@@ -2356,8 +2356,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1900301250}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: control
         m_Mode: 1
         m_Arguments:
@@ -5905,7 +5905,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f602e38c35e347ef8a5acd997ee9ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 1874401860}
+  control_pannel: {fileID: 471645854}
+  video_pannel: {fileID: 1849200650}
+  sound_pannel: {fileID: 757138589}
+  tutorial_pannel: {fileID: 848027576}
   Methods: {fileID: 1766714308}
+  sc: {fileID: 1420306619}
   Mouse_pannel: {fileID: 42326686}
   Mouse_Button_pannel: {fileID: 1315882673}
   Keyboard_pannel: {fileID: 1768223417}
@@ -10586,8 +10592,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1900301250}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: video
         m_Mode: 1
         m_Arguments:
@@ -10816,6 +10822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score_number: 0
+  control_method_value: 0
 --- !u!4 &1420306620
 Transform:
   m_ObjectHideFlags: 0
@@ -14153,8 +14160,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1900301250}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 793113033}
+        m_TargetAssemblyTypeName: Set, Assembly-CSharp
         m_MethodName: sound
         m_Mode: 1
         m_Arguments:
@@ -14559,7 +14566,6 @@ GameObject:
   - component: {fileID: 1900301249}
   - component: {fileID: 1900301248}
   - component: {fileID: 1900301247}
-  - component: {fileID: 1900301250}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -14631,23 +14637,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.00005722}
   m_SizeDelta: {x: 1224.142, y: 828.501}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1900301250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900301246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0ca6225f41d4dffad6a39f37474bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 1874401860}
-  control_pannel: {fileID: 471645854}
-  video_pannel: {fileID: 1849200650}
-  sound_pannel: {fileID: 757138589}
-  tutorial_pannel: {fileID: 848027576}
 --- !u!1 &1930757449
 GameObject:
   m_ObjectHideFlags: 0

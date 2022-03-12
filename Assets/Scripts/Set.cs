@@ -9,16 +9,17 @@ public class Set : MonoBehaviour
 {
     public static Set setting;
 
-    private void Awake() {
-        if(setting == null){
-            setting = this;
-        }else{
-            Destroy(gameObject);
-        }
-    }
+    public TextMeshProUGUI title;
+
+    [Header("Settings")]
+    public GameObject control_pannel;
+    public GameObject video_pannel;
+    public GameObject sound_pannel;
+    public GameObject tutorial_pannel;
 
     [Header("Control Setting")]
     public TMP_Dropdown Methods;
+    public Score sc;
     [Space]
     public GameObject Mouse_pannel;
     public GameObject Mouse_Button_pannel;
@@ -46,8 +47,63 @@ public class Set : MonoBehaviour
      public TextMeshProUGUI Explosion_sound_num;
      public TextMeshProUGUI Special_sound_num;
 
+    private void Awake() {
+        if(setting == null){
+            setting = this;
+        }else{
+            Destroy(gameObject);
+        }
+    }
 
-      //Sound Settings
+    private void Start() {
+        if (sc.control_method_value == 0){
+            GameManager.instance.controls = GameManager.controlMethod.Mouse;
+        } else if (sc.control_method_value == 1){
+            GameManager.instance.controls = GameManager.controlMethod.TwoButtonMouse;
+        }else if (sc.control_method_value == 2){
+            GameManager.instance.controls = GameManager.controlMethod.TwoButtonKeyboard;
+        }
+        Methods.value = sc.control_method_value;
+    }
+
+    //Pannel Settings
+    public void control(){
+        title.text = "Control";
+        control_pannel.SetActive(true);
+
+        video_pannel.SetActive(false);
+        sound_pannel.SetActive(false);
+        tutorial_pannel.SetActive(false);
+    }
+
+    public void video(){
+        title.text = "Video";
+        video_pannel.SetActive(true);
+
+        control_pannel.SetActive(false);
+        sound_pannel.SetActive(false);
+        tutorial_pannel.SetActive(false);
+    }
+
+    public void sound(){
+        title.text = "Sound";
+        sound_pannel.SetActive(true);
+
+        control_pannel.SetActive(false);
+        video_pannel.SetActive(false);
+        tutorial_pannel.SetActive(false);
+    }
+
+    public void tutorial(){
+        title.text = "Tutorial";
+        tutorial_pannel.SetActive(true);
+
+        control_pannel.SetActive(false);
+        video_pannel.SetActive(false);
+        sound_pannel.SetActive(false);
+    }
+
+    //Sound Settings
     public void master_control(){
         float sound = master.value;
         master_num.text = "Master Volume: " + sound.ToString("F1");
@@ -131,19 +187,18 @@ public class Set : MonoBehaviour
 
     //Controll Setting
     public void SetControl(){
-        int choice = Methods.value;
 
-        if(choice == 0){
+        if(Methods.value == 0){
             GameManager.instance.controls = GameManager.controlMethod.Mouse;
             Mouse_pannel.SetActive(true);
             Mouse_Button_pannel.SetActive(false);
             Keyboard_pannel.SetActive(false);
-        }else if (choice == 1){
+        }else if (Methods.value == 1){
             GameManager.instance.controls = GameManager.controlMethod.TwoButtonMouse;
             Mouse_Button_pannel.SetActive(true);
             Mouse_pannel.SetActive(false);
             Keyboard_pannel.SetActive(false);
-        }else if (choice == 2){
+        }else if (Methods.value == 2){
             GameManager.instance.controls = GameManager.controlMethod.TwoButtonKeyboard;
             Keyboard_pannel.SetActive(true);
             Mouse_pannel.SetActive(false);

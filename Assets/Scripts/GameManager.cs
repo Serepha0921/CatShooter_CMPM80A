@@ -66,10 +66,28 @@ public class GameManager : MonoBehaviour
                 time -= Time.deltaTime;
             }else{
                 sc.Score_number = Score;
+                
+                if(controls == controlMethod.Mouse){
+                    sc.control_method_value = 0;
+                } else if (controls == controlMethod.TwoButtonMouse){
+                    sc.control_method_value = 1;
+                } else if (controls == controlMethod.TwoButtonKeyboard){
+                    sc.control_method_value = 2;
+                }
+
                 SceneManager.LoadScene("Win");
             }
             if(health <= 0){
                 sc.Score_number = Score;
+                
+                if(controls == controlMethod.Mouse){
+                    sc.control_method_value = 0;
+                } else if (controls == controlMethod.TwoButtonMouse){
+                    sc.control_method_value = 1;
+                } else if (controls == controlMethod.TwoButtonKeyboard){
+                    sc.control_method_value = 2;
+                }
+
                 SceneManager.LoadScene("Lose");
             }
         }
