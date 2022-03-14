@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour
         resumeGame();
     }
 
-
-
     // Update is called once per frame
     private void Update()
     {
