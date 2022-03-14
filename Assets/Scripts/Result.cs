@@ -12,12 +12,13 @@ public class Result : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = GameObject.Find("Score");
+        score = GameObject.Find("Information");
         sc = score.GetComponent<Score>().Score_number;
         scorePan.text = "Score: " + sc;
     }
 
     public void back(){
+        score.GetComponent<Score>().Score_number = 0;
         SceneManager.LoadScene("SampleScene");
     }
 

@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [Header("Game stats")]
+    public bool GameStart = false;
     public bool isGameover = false;
     public bool GameStop = false;
     public Score sc;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     public void Start_Game() {
         cat.SetActive(true);
         Spawner.SetActive(true);
+        GameStart = true;
         Score = 0;
         resumeGame();
     }

@@ -584,7 +584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &42326687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &198666031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5889,7 +5889,7 @@ MonoBehaviour:
   sound_pannel: {fileID: 757138589}
   tutorial_pannel: {fileID: 848027576}
   Methods: {fileID: 1766714308}
-  sc: {fileID: 1420306619}
+  sc: {fileID: 1420306618}
   Mouse_pannel: {fileID: 42326686}
   Mouse_Button_pannel: {fileID: 1315882673}
   Keyboard_pannel: {fileID: 1768223417}
@@ -12342,11 +12342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcab35fb73de74652bac53c5ddcc4898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStart: 0
   isGameover: 0
   GameStop: 0
   sc: {fileID: 1420306619}
   Score: 0
-  time: 180
+  time: 10
   Score_Pannel: {fileID: 1578471977}
   Timer: {fileID: 499879467}
   cat: {fileID: 445532538}
@@ -13281,7 +13282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1768223418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14260,7 +14261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1900301247
 MonoBehaviour:
   m_ObjectHideFlags: 0

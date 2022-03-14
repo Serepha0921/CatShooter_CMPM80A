@@ -7,8 +7,6 @@ using TMPro;
 
 public class Set : MonoBehaviour
 {
-    public static Set setting;
-
     [Header("Pannels")]
     public GameObject pause_pannel;
     public GameObject setting_pannel;
@@ -28,7 +26,7 @@ public class Set : MonoBehaviour
 
     [Header("Control Setting")]
     public TMP_Dropdown Methods;
-    public Score sc;
+    public GameObject sc;
     [Space]
     public GameObject Mouse_pannel;
     public GameObject Mouse_Button_pannel;
@@ -56,38 +54,37 @@ public class Set : MonoBehaviour
      public TextMeshProUGUI Explosion_sound_num;
      public TextMeshProUGUI Special_sound_num;
 
-    private void Awake() {
-        if(setting == null){
-            setting = this;
-        }else{
-            Destroy(gameObject);
-        }
-    }
 
     private void Start() {
+        sc = GameObject.Find("Information");
+        setting_pannel.SetActive (true);
+        Methods.value = sc.GetComponent<Score>().control_method_value;
+
         pause_pannel.SetActive (false);
         setting_pannel.SetActive (false);
-
-        Methods.value = sc.control_method_value;
     }
 
     private void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            pause();
+        if(GameManager.instance.GameStart){
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                pause();
+            }
         }
     }
 
     //Buttons --------------------------------------------------------------------------------------------------------------------------------------------------------
     public void pause(){
-        if (!pause_pannel.activeSelf && ! setting_pannel.activeSelf){
-            GameManager.instance.pauseGame();
-            pause_pannel.SetActive (true);
-            pause_button.SetActive (false);
-        } else {
-            GameManager.instance.resumeGame();
-            pause_pannel.SetActive (false);
-            setting_pannel.SetActive (false);
-            pause_button.SetActive (true);
+        if(GameManager.instance.GameStart){
+            if (!pause_pannel.activeSelf && ! setting_pannel.activeSelf){
+                GameManager.instance.pauseGame();
+                pause_pannel.SetActive (true);
+                pause_button.SetActive (false);
+            } else {
+                GameManager.instance.resumeGame();
+                pause_pannel.SetActive (false);
+                setting_pannel.SetActive (false);
+                pause_button.SetActive (true);
+            }
         }
     }
 
