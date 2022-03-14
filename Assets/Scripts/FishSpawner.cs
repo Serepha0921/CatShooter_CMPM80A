@@ -22,7 +22,12 @@ public class FishSpawner : MonoBehaviour
 
     private IEnumerator Spawn (float term, GameObject fish){
         yield return new WaitForSeconds(term);
-        Instantiate(fish,new Vector3(Random.Range(-25f,25f),Random.Range(-20f,20f),0),Quaternion.identity);
+        int rand = Random.Range(0,2);
+        if(rand == 0){
+            Instantiate(fish,new Vector3(Random.Range(8f,23f),Random.Range(10f,18f),0),Quaternion.identity);
+        }else if(rand == 1){
+            Instantiate(fish,new Vector3(Random.Range(-8f,-23f),Random.Range(-10f,-18f),0),Quaternion.identity);
+        }
         if(!GameManager.instance.GameStop){
             StartCoroutine(Spawn(term,fish));
         }

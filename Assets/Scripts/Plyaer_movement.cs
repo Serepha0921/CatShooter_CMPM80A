@@ -19,13 +19,12 @@ public class Plyaer_movement : MonoBehaviour
     [Header("Guns")]
     public Transform gun;
     public GameObject bullet;
+    private float timer = 0;
+    public float attackCoolTime = 0.5f;
 
     private float speed;
     private bool Go_Forward = true;
 
-    [Header("Speed_M")]
-    public float Movement_speed = 20f;
-    public float rotation_speed = 15f;
 
     [Header("Speed_TBM")]
     public float rotating_speed = 50f;
@@ -39,6 +38,7 @@ public class Plyaer_movement : MonoBehaviour
     private void Awake() {
         player = GetComponent<Transform>();
         audio = GetComponent<AudioSource>();
+        timer = 0;
     }
 
     private void Update() {
@@ -47,12 +47,10 @@ public class Plyaer_movement : MonoBehaviour
             switch (GameManager.instance.controls)
             {
                 case GameManager.controlMethod.Mouse:{
-                    speed = Movement_speed;
-                    mouseControl();
+                    WASD();
                     break;
                 }
                 case GameManager.controlMethod.TwoButtonMouse:{
-                    speed = Moving_speed;
                     twoButtonMouseControl();
                     break;
                 }
@@ -63,31 +61,34 @@ public class Plyaer_movement : MonoBehaviour
                 }
             }
         }
+
+        timer += Time.deltaTime;
     }
 
-    private void mouseControl (){
-        //rotate
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Cat.transform.position;
-        float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        Cat.transform.rotation = Quaternion.Slerp(Cat.transform.rotation, rotation, rotation_speed * Time.deltaTime);
+    private void WASD(){
+        //Shoot
+        if (Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)){
+            shoot();
+        }
 
-        if(Input.GetMouseButtonDown(0)){// shoot
-             //speed = 0f;
-             shoot();
-        }else if (Input.GetMouseButton(1)){//stop
-             speed = 0f;
-        }else{//Move
-             speed = Movement_speed;
-             player.position += Cat.transform.right * speed *Time.deltaTime;
+        //rotate left
+        if (Input.GetKey(KeyCode.A)){
+            if(Input.GetKey(KeyCode.D)){
+                shoot();
+            }
+            Cat.transform.Rotate(0,0,Time.deltaTime * RotateSpeed_key,Space.Self);
+        }
+
+        //rotate right
+        if (Input.GetKey(KeyCode.D)){
+            if(Input.GetKey(KeyCode.A)){
+                shoot();
+            }
+            Cat.transform.Rotate(0,0,-(Time.deltaTime * RotateSpeed_key),Space.Self);
         }
     }
 
     private void twoButtonMouseControl(){
-        //stop
-        if(Input.GetMouseButtonDown(2)){
-            Go_Forward = !Go_Forward;
-        }
         //Shoot
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1)){
             shoot();
@@ -108,61 +109,40 @@ public class Plyaer_movement : MonoBehaviour
             }
             Cat.transform.Rotate(0,0,-(Time.deltaTime * rotating_speed),Space.Self);
         }
-        //stop
-        if (Go_Forward){
-            speed = Moving_speed;
-        }else{
-            speed = 0f;
-        }
-        //move
-        player.position += Cat.transform.right * speed *Time.deltaTime;
     }
 
     private void twoButtonKeyBoardControl(){
-        //stop
-        if(Input.GetKeyDown(KeyCode.DownArrow)){
-            Go_Forward = !Go_Forward;
-        }
         //Shoot
-        if (Input.GetKeyDown(KeyCode.UpArrow)){
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.RightArrow)){
             shoot();
         }
 
         //rotate left
         if (Input.GetKey(KeyCode.LeftArrow)){
+            if(Input.GetKey(KeyCode.RightArrow)){
+                shoot();
+            }
             Cat.transform.Rotate(0,0,Time.deltaTime * RotateSpeed_key,Space.Self);
         }
 
         //rotate right
         if (Input.GetKey(KeyCode.RightArrow)){
-            Cat.transform.Rotate(0,0,-(Time.deltaTime * RotateSpeed_key),Space.Self);
-        }
-        //stop
-        if (Go_Forward){
-            speed = MoveSpeed_key;
-        }else{
-            speed = 0f;
-        }
-        //move
-        player.position += Cat.transform.right * speed *Time.deltaTime;
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Enemy"){
-            GameManager.instance.PlayerDamage(30);
-            if(audio.clip != Hit){
-                audio.clip = Hit;
+            if(Input.GetKey(KeyCode.LeftArrow)){
+                shoot();
             }
-            audio.Play();
+            Cat.transform.Rotate(0,0,-(Time.deltaTime * RotateSpeed_key),Space.Self);
         }
     }
 
     public void shoot(){
-        if(audio.clip != blast){
-            audio.clip = blast;
+        if (timer >= attackCoolTime){
+            if(audio.clip != blast){
+                audio.clip = blast;
+            }
+            audio.Play();
+            Instantiate(bullet,gun.position,gun.rotation);
+            timer = 0;
         }
-        audio.Play();
-        Instantiate(bullet,gun.position,gun.rotation);
     }
 
 }

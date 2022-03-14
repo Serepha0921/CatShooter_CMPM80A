@@ -6,9 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
     public int health = 100;
-    public int damage = 30;
-    public int movementFlag = 1;
-    public bool isAttacked = false;
+    public int movementFlag;
+    public int BonusScore = 0;
 
     [Space]
     public AudioSource audio;
@@ -16,18 +15,22 @@ public class Enemy : MonoBehaviour
     [Header("speeds")]
     private float speed = 0f;
     public float normal_speed = 1f;
-    public float tracing_speed = 1f;
     public float rotation_speed = 1f;
+
+    private float radius = 0;
+    private Vector2 newPos = new Vector2();
+    private float runningTime = 0;
+    private float x = 0f;
+    private float y = 0f;
 
     [Space]
     public bool isTracing = false;
 
-    private GameObject target;
+    public GameObject target;
 
     // Start is called before the first frame update
     public void GetDamage (int damage){
         health = health - damage;
-        isAttacked = true;
         if (health <= 0){
             Dead();
         }
@@ -35,8 +38,7 @@ public class Enemy : MonoBehaviour
 
     public void Dead(){
         audio.Play();
-        GameManager.instance.Score += 10;
-        GameManager.instance.time += 15;
+        GameManager.instance.Score = GameManager.instance.Score + 10 + BonusScore;
         Destroy(gameObject,0.8f);
     }
 
@@ -46,11 +48,13 @@ public class Enemy : MonoBehaviour
 
     private void Awake() {
         speed = normal_speed;
+        Vector2 pos = gameObject.transform.position;
+        radius = Mathf.Sqrt (Mathf.Pow(pos.x,2) + Mathf.Sqrt (Mathf.Pow (pos.y,2)));
+        StartCoroutine("ChangeMovement");
         if(GameManager.instance.number >= GameManager.instance.max){
             Destroy(gameObject);
         } else{
             GameManager.instance.number += 1;
-            StartCoroutine("ChangeMovement");
         }
     }
 
@@ -58,40 +62,35 @@ public class Enemy : MonoBehaviour
         move();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player"){
-            target = other.gameObject;
-            StopCoroutine("ChangeMovement");
-        }
-    }
-
-
-    private void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.tag == "Player"){
-            isTracing = true;
-            if(isAttacked){
-                speed = tracing_speed;
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Player"){
-            isTracing = false;
-            speed = normal_speed;
-            isAttacked = false;
-            StartCoroutine("ChangeMovement");
-        }
-    }
-
     IEnumerator ChangeMovement(){
-        movementFlag = Random.Range(0,5);
+        movementFlag = Random.Range(1,3);
         yield return new WaitForSeconds(5f);
         
         StartCoroutine("ChangeMovement");
     }
 
     private void move(){
+        speed = normal_speed;
+        //runningTime += Time.deltaTime *speed;
+        if(movementFlag == 1){
+            transform.localScale = new Vector3 (1,1,1);
+            runningTime += Time.deltaTime *speed;
+        }else if (movementFlag == 2){
+            transform.localScale = new Vector3 (1,-1,1);
+            runningTime += Time.deltaTime *speed * -1;
+        }
+        x = radius * Mathf.Cos (runningTime);
+        y = radius * Mathf.Sin (runningTime);
+        newPos = new Vector2(x,y);
+        gameObject.transform.position = newPos;
+
+        Vector3 playerPos = target.transform.position;
+        Vector2 direction = playerPos - transform.position;
+        float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotation_speed * Time.deltaTime);
+
+        /*
         Vector3 moveVelocity = Vector3.zero;
 
         if (isTracing){
@@ -124,5 +123,6 @@ public class Enemy : MonoBehaviour
 
             transform.position += moveVelocity * speed *Time.deltaTime;
         }
+        */
     }
 }

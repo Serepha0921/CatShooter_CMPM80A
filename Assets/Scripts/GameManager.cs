@@ -11,25 +11,22 @@ public class GameManager : MonoBehaviour
     public bool GameStop = false;
     public Score sc;
     public int Score = 0;
-    public float time = 60f;
+    public float time = 120f;
 
     [Header("UI")]
-    public TextMeshProUGUI HP;
+    public TextMeshProUGUI Score_Pannel;
     public TextMeshProUGUI Timer;
 
     [Header("GameSystem")]
     public GameObject cat;
     public GameObject Spawner;
 
-    [Header("Player stats")]
-    public int health = 300;
-    public int MaxHealth = 300;
     public enum controlMethod {Mouse,TwoButtonMouse,TwoButtonKeyboard};
     public controlMethod controls;
 
     [Header("Enemy Info")]
     public int number = 0;
-    public int max = 10;
+    public int max = 20;
 
     public static GameManager instance;
 
@@ -45,18 +42,11 @@ public class GameManager : MonoBehaviour
     public void Start_Game() {
         cat.SetActive(true);
         Spawner.SetActive(true);
-        health = MaxHealth;
         Score = 0;
-        time = 60f;
         resumeGame();
     }
 
-    public void PlayerDamage(int damage){
-        health= health - damage;
-        if (health <= 0){
-            isGameover = true;
-        }
-    }
+
 
     // Update is called once per frame
     private void Update()
@@ -77,22 +67,9 @@ public class GameManager : MonoBehaviour
 
                 SceneManager.LoadScene("Win");
             }
-            if(health <= 0){
-                sc.Score_number = Score;
-                
-                if(controls == controlMethod.Mouse){
-                    sc.control_method_value = 0;
-                } else if (controls == controlMethod.TwoButtonMouse){
-                    sc.control_method_value = 1;
-                } else if (controls == controlMethod.TwoButtonKeyboard){
-                    sc.control_method_value = 2;
-                }
-
-                SceneManager.LoadScene("Lose");
-            }
         }
         Timer.text = time.ToString("N0") + "s";
-        HP.text = health+" / "+MaxHealth;
+        Score_Pannel.text = "Score: " + Score;
     }
 
     public void pauseGame(){
