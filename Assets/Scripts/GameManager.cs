@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool GameStart = false;
     public bool isGameover = false;
     public bool GameStop = false;
-    public Score sc;
+    public GameObject sc;
     public int Score = 0;
     public float time = 120f;
 
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         Spawner.SetActive(true);
         GameStart = true;
         Score = 0;
+        sc = GameObject.Find("Information");
         resumeGame();
     }
 
@@ -55,14 +56,14 @@ public class GameManager : MonoBehaviour
             if(time >0){
                 time -= Time.deltaTime;
             }else{
-                sc.Score_number = Score;
+                sc.GetComponent<Score>().Score_number = Score;
                 
                 if(controls == controlMethod.Mouse){
-                    sc.control_method_value = 0;
+                    sc.GetComponent<Score>().control_method_value = 0;
                 } else if (controls == controlMethod.TwoButtonMouse){
-                    sc.control_method_value = 1;
+                    sc.GetComponent<Score>().control_method_value = 1;
                 } else if (controls == controlMethod.TwoButtonKeyboard){
-                    sc.control_method_value = 2;
+                    sc.GetComponent<Score>().control_method_value = 2;
                 }
 
                 SceneManager.LoadScene("Win");
