@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34aefa381548e4a9698920abb97d3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   movementFlag: 1
   BonusScore: 15
   audio: {fileID: 4666762980793526800}

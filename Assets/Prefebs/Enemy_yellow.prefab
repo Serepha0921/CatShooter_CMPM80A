@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34aefa381548e4a9698920abb97d3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 30
   movementFlag: 0
   BonusScore: 0
   audio: {fileID: 3080251750546224313}
-  normal_speed: 1
+  normal_speed: 0.75
   rotation_speed: 40
   isTracing: 0
   target: {fileID: 6839181520847754530, guid: 6e1a3c11e35c24da2bd6aecfd7b9c813, type: 3}
