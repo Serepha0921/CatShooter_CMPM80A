@@ -6,4 +6,4 @@
     + Jae Choi 
     + Isha Chury 
     + Newton Novak 
-    + Tara Rosnan
+    + Tara Roshan
