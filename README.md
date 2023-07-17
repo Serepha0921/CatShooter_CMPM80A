@@ -7,6 +7,12 @@
     + Newton Novak 
     + Tara Roshan
 ---
+### **How to Play:**
+Keyboard:
+- A: rotate left
+- D: rotate right
+- A+D: shoot
+---
 ### **Assets:**
 #### CatShooter_Screen
 <img src="https://github.com/Serepha0921/CatShooter_CMPM80A/assets/25620864/aa9c41e6-9032-4e84-ae3a-eca042e45717" alt="drawing" width="400" />
